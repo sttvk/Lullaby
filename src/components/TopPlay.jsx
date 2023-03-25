@@ -13,7 +13,7 @@ import "swiper/css/free-mode";
 
 const TopChartCard = ({
   song,
-  i,
+  idx,
   isPlaying,
   activeSong,
   handlePauseClick,
@@ -24,7 +24,7 @@ const TopChartCard = ({
       activeSong?.title === song?.title ? "bg-[#4c426e]" : "bg-transparent"
     } py-2 p-4 rounded-lg cursor-pointer mb-2`}
   >
-    <h3 className="font-bold text-base text-white mr-3">{i + 1}.</h3>
+    <h3 className="font-bold text-base text-white mr-3">{idx + 1}.</h3>
     <div className="flex-1 flex flex-row justify-between items-center">
       <img
         className="w-20 h-20 rounded-lg"
@@ -66,8 +66,8 @@ const TopPlay = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = (song, i) => {
-    dispatch(setActiveSong({ song, data, i }));
+  const handlePlayClick = (song, idx) => {
+    dispatch(setActiveSong({ song, data, idx }));
     dispatch(playPause(true));
   };
 
@@ -85,15 +85,15 @@ const TopPlay = () => {
         </div>
 
         <div className="mt-4 flex flex-col gap-1">
-          {topPlays?.map((song, i) => (
+          {topPlays?.map((song, idx) => (
             <TopChartCard
               key={song.key}
               song={song}
-              i={i}
+              idx={idx}
               isPlaying={isPlaying}
               activeSong={activeSong}
               handlePauseClick={handlePauseClick}
-              handlePlayClick={() => handlePlayClick(song, i)}
+              handlePlayClick={() => handlePlayClick(song, idx)}
             />
           ))}
         </div>
