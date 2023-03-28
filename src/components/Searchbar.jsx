@@ -3,9 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 const Searchbar = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search/${searchTerm}`);
+  };
+
   return (
     <form
-      className="p-2 text-gray-400 focus-within: text-gray-600"
+      onSubmit={handleSubmit}
+      className="p-2 text-gray-400 focus-within:text-gray-600"
       autoComplete="off"
     >
       <label htmlFor="search-field" className="sr-only">
@@ -20,7 +29,8 @@ const Searchbar = () => {
           id="search-field"
           placeholder="Search"
           type="search"
-          value=""
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
         />
       </div>
     </form>
