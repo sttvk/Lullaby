@@ -20,7 +20,7 @@ const SongDetails = () => {
   } = useGetSongRelatedQuery({ songid });
 
   if (isFetchingSongDetails || isFetchingRelatedSongs)
-    return <Loader title="Fetching song details" />;
+    return <Loader title="Fetching song details..." />;
 
   if (error) return <Error />;
 
