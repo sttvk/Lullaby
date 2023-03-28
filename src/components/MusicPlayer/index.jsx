@@ -19,8 +19,6 @@ const MusicPlayer = () => {
   const [seekTime, setSeekTime] = useState(0);
   const [appTime, setAppTime] = useState(0);
   const [volume, setVolume] = useState(0.3);
-  const [repeat, setRepeat] = useState(false);
-  const [shuffle, setShuffle] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,19 +37,12 @@ const MusicPlayer = () => {
 
   const handleNextSong = () => {
     dispatch(playPause(false));
-
-    if (!shuffle) {
-      dispatch(nextSong((currentIndex + 1) % currentSongs.length));
-    } else {
-      dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)));
-    }
+    dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)));
   };
 
   const handlePrevSong = () => {
     if (currentIndex === 0) {
       dispatch(prevSong(currentSongs.length - 1));
-    } else if (shuffle) {
-      dispatch(prevSong(Math.floor(Math.random() * currentSongs.length)));
     } else {
       dispatch(prevSong(currentIndex - 1));
     }
@@ -68,10 +59,6 @@ const MusicPlayer = () => {
         <Controls
           isPlaying={isPlaying}
           isActive={isActive}
-          repeat={repeat}
-          setRepeat={setRepeat}
-          shuffle={shuffle}
-          setShuffle={setShuffle}
           currentSongs={currentSongs}
           handlePlayPause={handlePlayPause}
           handlePrevSong={handlePrevSong}
@@ -90,7 +77,6 @@ const MusicPlayer = () => {
           volume={volume}
           isPlaying={isPlaying}
           seekTime={seekTime}
-          repeat={repeat}
           currentIndex={currentIndex}
           onEnded={handleNextSong}
           onTimeUpdate={(event) => setAppTime(event.target.currentTime)}
