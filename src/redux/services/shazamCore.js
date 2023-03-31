@@ -38,6 +38,7 @@ export const shazamCoreApi = createApi({
   }),
 });
 
+
 export const {
   useGetTopChartsQuery,
   useGetSongsByGenreQuery,
