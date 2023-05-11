@@ -64,5 +64,5 @@ Open your web browser and navigate to `http://localhost:3000` to use the app.
 
 ![App Screenshot](src/assets/screenshots/ss-01.png)
 ![App Screenshot](src/assets/screenshots/ss-02.png)
-![App Screenshot](src/assets/screenshots/ss-03.png =250x250)
-![App Screenshot](src/assets/screenshots/ss-04.png =250x250)
+![App Screenshot](src/assets/screenshots/ss-03.png=250x250)
+![App Screenshot](src/assets/screenshots/ss-04.png=250x250)
